@@ -1,3 +1,4 @@
+// Copyright (c) 2018, The ArQmA Project
 import QtQuick 2.2
 import QtGraphicalEffects 1.0
 import QtQuick.Layouts 1.1
