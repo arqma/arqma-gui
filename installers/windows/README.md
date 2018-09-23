@@ -1,6 +1,7 @@
 # ArQmA GUI Wallet Windows Installer #
 
 Copyright (c) 2018, The ArQmA Network
+
 Copyright (c) 2014-2018, The Monero Project
 
 ## Introduction ##
