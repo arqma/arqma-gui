@@ -1,5 +1,7 @@
-FROM arqma-android
 # Copyright (c) 2018, The ArQmA Project
+
+FROM arqma-android
+
 #INSTALL JAVA
 RUN echo "deb http://ftp.fr.debian.org/debian/ jessie-backports main contrib non-free" >> /etc/apt/sources.list
 RUN dpkg --add-architecture i386 \
