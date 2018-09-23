@@ -1,4 +1,4 @@
-FROM monero-android
+FROM arqma-android
 # Copyright (c) 2018, The ArQmA Project
 #INSTALL JAVA
 RUN echo "deb http://ftp.fr.debian.org/debian/ jessie-backports main contrib non-free" >> /etc/apt/sources.list
@@ -34,9 +34,9 @@ RUN cp -r qt5/qtbase/mkspecs/android-clang qt5/qtbase/mkspecs/android-clang-libc
 ENV ANDROID_API android-21
     
 #ANDROID SDK TOOLS
-RUN echo y | $ANDROID_SDK_ROOT/tools/android update sdk --no-ui --all --filter platform-tools 
-RUN echo y | $ANDROID_SDK_ROOT/tools/android update sdk --no-ui --all --filter ${ANDROID_API}
-RUN echo y | $ANDROID_SDK_ROOT/tools/android update sdk --no-ui --all --filter build-tools-25.0.1 
+#RUN echo y | $ANDROID_SDK_ROOT/tools/android update sdk --no-ui --all --filter platform-tools 
+#RUN echo y | $ANDROID_SDK_ROOT/tools/android update sdk --no-ui --all --filter ${ANDROID_API}
+#RUN echo y | $ANDROID_SDK_ROOT/tools/android update sdk --no-ui --all --filter build-tools-25.0.1 
 
 ENV CLEAN_PATH $JAVA_HOME/bin:/usr/cmake-3.6.3-Linux-x86_64/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
@@ -92,10 +92,10 @@ RUN cp openssl/lib* ${ANDROID_NDK_ROOT}/platforms/${ANDROID_API}/arch-arm/usr/li
 RUN cp boost_${BOOST_VERSION}/android32/lib/lib* ${ANDROID_NDK_ROOT}/platforms/${ANDROID_API}/arch-arm/usr/lib
 RUN cp ZBar/android/obj/local/armeabi-v7a/lib* ${ANDROID_NDK_ROOT}/platforms/${ANDROID_API}/arch-arm/usr/lib
 
-RUN git clone https://github.com/monero-project/monero-gui.git \
-    && cd monero-gui \
+RUN git clone https://github.com/arqma/arqma-gui.git \
+    && cd arqma-gui \
     && git submodule update \
-    && CC=arm-linux-androideabi-clang CXX=arm-linux-androideabi-clang++ BOOST_ROOT=/opt/android/boost_1_62_0 \
+    && CC=arm-linux-androideabi-clang CXX=arm-linux-androideabi-clang++ BOOST_ROOT=/opt/android/boost_${BOOST_VERSION} \
          BOOST_LIBRARYDIR=${WORKDIR}/boost_${BOOST_VERSION}/android32/lib/ \
          OPENSSL_ROOT_DIR=${WORKDIR}/openssl/ \
          CMAKE_INCLUDE_PATH=${WORKDIR}/cppzmq/ \
