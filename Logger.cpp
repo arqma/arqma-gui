@@ -1,3 +1,4 @@
+// Copyright (c) 2018, The ArQmA Project
 #include <QCoreApplication>
 #include <QStandardPaths>
 #include <QFileInfo>
