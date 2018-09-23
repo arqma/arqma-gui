@@ -1,4 +1,5 @@
 /**
+ * Copyright (c) 2018, The ArQmA Project
  * Formats a date.
  * @param {date} date - toggle decorations
  * @param {params} params - 
