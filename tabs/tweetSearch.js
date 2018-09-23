@@ -1,3 +1,4 @@
+// Copyright (c) 2018, The ArQmA Project
 .pragma library
 
 function formatDate(date) {
