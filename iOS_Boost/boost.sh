@@ -1,5 +1,6 @@
 #!/bin/bash
 #===============================================================================
+# Copyright (c) 2018, The ArQmA Project
 # Filename:  boost.sh
 # Author:    Pete Goodliffe
 # Copyright: (c) Copyright 2009 Pete Goodliffe
