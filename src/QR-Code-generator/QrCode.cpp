@@ -1,4 +1,5 @@
 /* 
+ * Copyright (c) 2018, The ArQmA Project
  * QR Code generator library (C++)
  * 
  * Copyright (c) 2016 Project Nayuki
