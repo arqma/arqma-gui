@@ -35,6 +35,7 @@ DaemonManager *DaemonManager::instance(const QStringList *args)
 bool DaemonManager::start(const QString &flags, NetworkType::Type nettype, const QString &dataDir, const QString &bootstrapNodeAddress)
 {
     // prepare command line arguments and pass to monerod
+    // Copyright (c) 2018, The ArQmA Project
     QStringList arguments;
 
     // Start daemon with --detach flag on non-windows platforms
