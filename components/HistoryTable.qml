@@ -454,7 +454,7 @@ ListView {
                         var rings = currentWallet.getRings(hash)
                         if (rings)
                             rings = rings.replace(/\|/g, '\n')
-                        informationPopup.title = "Transaction details";
+                        informationPopup.title = "Transaction details. Double click/double tap to copy to the clipboard.";
                         informationPopup.content = buildTxDetailsString(hash,paymentId,tx_key,tx_note,destinations, rings);
                         informationPopup.onCloseCallback = null
                         informationPopup.open();
