@@ -827,7 +827,7 @@ ApplicationWindow {
             result = currentWallet.getTxProof(txid, address, message);
         if (!result || result.indexOf("error|") === 0)
             result = currentWallet.getSpendProof(txid, message);
-        informationPopup.title  = qsTr("Payment proof") + translationManager.emptyString;
+        informationPopup.title  = qsTr("Payment proof.") + translationManager.emptyString;
         if (result.indexOf("error|") === 0) {
             var errorString = result.split("|")[1];
             informationPopup.text = qsTr("Couldn't generate a proof because of the following reason: \n") + errorString + translationManager.emptyString;
@@ -860,7 +860,7 @@ ApplicationWindow {
             var in_pool = results[3] === "true";
             var confirmations = results[4];
 
-            informationPopup.title  = qsTr("Payment proof check") + translationManager.emptyString;
+            informationPopup.title  = qsTr("Payment proof check. Double click/tap to copy results to the clipboard.") + translationManager.emptyString;
             informationPopup.icon = StandardIcon.Information
             if (!good) {
                 informationPopup.text = qsTr("Bad signature");
@@ -880,7 +880,7 @@ ApplicationWindow {
         }
         else if (results.length == 2 && results[0] === "true") {
             var good = results[1] === "true";
-            informationPopup.title = qsTr("Payment proof check") + translationManager.emptyString;
+            informationPopup.title = qsTr("Payment proof.") + translationManager.emptyString;
             informationPopup.icon = good ? StandardIcon.Information : StandardIcon.Critical;
             informationPopup.text = good ? qsTr("Good signature") : qsTr("Bad signature");
         }
