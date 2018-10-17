@@ -9,6 +9,7 @@ Copyright (c) 2014-2018, The Monero Project
 ### On Linux:
 
 (Tested on Ubuntu 17.10 x64, Ubuntu 18.04 x64 and Gentoo x64)
+Tip: results displayed on transactions, prove, address, and other results can be copied to the clipboard by double left click, or double tap on mobile platforms.
 
 1. Install Arqma dependencies
 
@@ -157,3 +158,4 @@ application.
     ```
 
 The executable can be found in the ```.\release\bin``` directory.
+Tip: results displayed on transactions, prove, address, and other results can be copied to the clipboard by double left click, or double tap on mobile platforms.
