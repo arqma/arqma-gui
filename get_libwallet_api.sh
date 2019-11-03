@@ -17,7 +17,7 @@ if [ ! -d $ARQMA_DIR/src ]; then
 fi
 git submodule update --remote
 git -C $ARQMA_DIR fetch
-git -C $ARQMA_DIR checkout release-v0.5.1
+git -C $ARQMA_DIR checkout release-v0.6.0
 
 # get arqma core tag
 pushd $ARQMA_DIR
@@ -247,5 +247,8 @@ if [ -d $ARQMA_DIR/build/$BUILD_TYPE/external/unbound ]; then
     $make_exec install -j$CPU_CORE_COUNT
     popd
 fi
+
+# RandomARQ library install
+eval make -C $ARQMA_DIR/build/$BUILD_TYPE/external/randomarq all install
 
 popd

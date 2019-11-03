@@ -41,7 +41,7 @@ Copyright (c) 2014-2018, The Monero Project
 
     ```
     cd arqma-gui
-    git checkout release-v0.4
+    git checkout release-v0.6
     QT_SELECT=5 ./build.sh
     ```
 
@@ -80,7 +80,7 @@ The executable can be found in the build/release/bin folder.
 
 4. Install Qt:
 
-  `brew install qt5`  (or download QT 5.8+ from [qt.io](https://www.qt.io/download-open-source/))
+  `brew install qt5`  (or download QT 5.9+ from [qt.io](https://www.qt.io/download-open-source/))
 
   If you have an older version of Qt installed via homebrew, you can force it to use 5.x like so:
 
@@ -88,7 +88,7 @@ The executable can be found in the build/release/bin folder.
 
 5. Add the Qt bin directory to your path
 
-    Example: `export PATH=$PATH:$HOME/Qt/5.8/clang_64/bin`
+    Example: `export PATH=$PATH:$HOME/Qt/5.9/clang_64/bin`
 
     This is the directory where Qt 5.x is installed on **your** system
 
@@ -100,7 +100,7 @@ The executable can be found in the build/release/bin folder.
 
   ```
   cd arqma-gui
-  git checkout release-v0.4
+  git checkout release-v0.6
   ```
 
 8. Start the build
@@ -182,7 +182,7 @@ Latest Msys2 and QT-5.12 has issue with bad_address at qml_cache. Workaround to 
 
     ```
     cd arqma-gui
-    git checkout release-v0.4
+    git checkout release-v0.6
     source ./build.sh
     ```
 

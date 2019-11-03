@@ -125,25 +125,25 @@ ios:arm64 {
     LIBS += \
         -L$$PWD/../ofxiOSBoost/build/libs/boost/lib/arm64 \
 }
+
+STD_LIBS = \
+    -lwallet_merged \
+    -llmdb \
+    -lepee \
+    -lunbound \
+    -lsodium \
+    -leasylogging \
+    -lrandomx
+    
 !ios:!android {
-LIBS += -L$$WALLET_ROOT/lib \
-        -lwallet_merged \
-        -llmdb \
-        -lepee \
-        -lunbound \
-        -lsodium \
-        -leasylogging
+    LIBS += -L$$WALLET_ROOT/lib \
+        $$STD_LIBS
 }
 
 android {
     message("Host is Android")
     LIBS += -L$$WALLET_ROOT/lib \
-        -lwallet_merged \
-        -llmdb \
-        -lepee \
-        -lunbound \
-        -lsodium \
-        -leasylogging
+        $$STD_LIBS
 }
 
 QMAKE_CXXFLAGS += -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=1 -Wformat -Wformat-security
@@ -156,14 +156,9 @@ ios {
     QMAKE_IOS_DEVICE_ARCHS = arm64
     CONFIG += arm64
     LIBS += -L$$WALLET_ROOT/lib-ios \
-        -lwallet_merged \
-        -llmdb \
-        -lepee \
-        -lunbound \
-        -lsodium \
-        -leasylogging
+        $$STD_LIBS
 
-    LIBS+= \
+    LIBS += \
         -L$$PWD/../OpenSSL-for-iPhone/lib \
         -L$$PWD/../ofxiOSBoost/build/libs/boost/lib/arm64 \
         -lboost_serialization \
@@ -180,7 +175,7 @@ ios {
 }
 
 CONFIG(WITH_SCANNER) {
-    if( greaterThan(QT_MINOR_VERSION, 5) ) {
+    if(greaterThan(QT_MINOR_VERSION, 5)) {
         message("using camera scanner")
         QT += multimedia
         DEFINES += "WITH_SCANNER"
@@ -236,12 +231,12 @@ win32 {
     BOOST_PATH=$$MSYS_PATH/boost
     BOOST_MINGW_PATH=$$MSYS_MINGW_PATH/boost
 
-    LIBS+=-L$$MSYS_PATH/lib
-    LIBS+=-L$$MSYS_MINGW_PATH/lib
-    LIBS+=-L$$BOOST_PATH/lib
-    LIBS+=-L$$BOOST_MINGW_PATH/lib
+    LIBS += -L$$MSYS_PATH/lib
+    LIBS += -L$$MSYS_MINGW_PATH/lib
+    LIBS += -L$$BOOST_PATH/lib
+    LIBS += -L$$BOOST_MINGW_PATH/lib
 
-    LIBS+= \
+    LIBS += \
         -Wl,-Bstatic \
         -lboost_serialization-mt \
         -lboost_thread-mt \
@@ -260,14 +255,14 @@ win32 {
         -liconv \
         -lssl \
         -lsodium \
-	-Wl,-Bdynamic \
+        -Wl,-Bdynamic \
         -lwinscard \
         -lws2_32 \
         -lwsock32 \
         -lIphlpapi \
         -lcrypt32 \
         -lhidapi \
-	-lgdi32 \
+        -lgdi32 \
         -lcrypto 
 
 #      !contains(QMAKE_TARGET.arch, x86_64) {
@@ -286,37 +281,37 @@ win32 {
 linux {
     CONFIG(static) {
         message("using static libraries")
-        LIBS+= -Wl,-Bstatic
+        LIBS += -Wl,-Bstatic
         QMAKE_LFLAGS += -static-libgcc -static-libstdc++
         QMAKE_LIBDIR += /usr/local/ssl/lib
-            LIBS+= -lunbound \
-                   -lusb-1.0 \
-                   -lhidapi-hidraw \
-                   -ludev
+            LIBS += -lunbound \
+                    -lusb-1.0 \
+                    -lhidapi-hidraw \
+                    -ludev
     } else {
       # On some distro's we need to add dynload
-      LIBS+= -ldl
+      LIBS += -ldl
     }
 
-    LIBS+= \
-        -lboost_serialization \
-        -lboost_thread \
-        -lboost_system \
-        -lboost_date_time \
-        -lboost_filesystem \
-        -lboost_regex \
-        -lboost_chrono \
-        -lboost_program_options \
-        -lssl \
-        -llmdb \
-        -lsodium \
-        -lhidapi-libusb \
-        -lcrypto
+    LIBS += \
+         -lboost_serialization \
+         -lboost_thread \
+         -lboost_system \
+         -lboost_date_time \
+         -lboost_filesystem \
+         -lboost_regex \
+         -lboost_chrono \
+         -lboost_program_options \
+         -lssl \
+         -llmdb \
+         -lsodium \
+         -lhidapi-libusb \
+         -lcrypto
 
     if(!android) {
-        LIBS+= \
-            -Wl,-Bdynamic \
-            -lGL
+        LIBS += \
+             -Wl,-Bdynamic \
+             -lGL
     }
     # currently Arqma has an issue with "static" build and linunwind-dev,
     # so we link libunwind-dev only for non-Ubuntu distros
@@ -336,25 +331,25 @@ macx {
     #     message("using static libraries")
     #     LIBS+= -Wl,-Bstatic
     # }
-    LIBS+= \
-        -L/usr/local/lib \
-        -L/usr/local/opt/openssl/lib \
-        -L/usr/local/opt/boost/lib \
-        -lboost_serialization \
-        -lboost_thread-mt \
-        -lboost_system-mt \
-        -lboost_system \
-        -lboost_date_time \
-        -lboost_filesystem \
-        -lboost_regex \
-        -lboost_chrono \
-        -lboost_program_options \
-        -framework CoreFoundation \
-        -lhidapi \
-        -lssl \
-        -lsodium \
-        -lcrypto \
-        -ldl
+    LIBS += \
+         -L/usr/local/lib \
+         -L/usr/local/opt/openssl/lib \
+         -L/usr/local/opt/boost/lib \
+         -lboost_serialization \
+         -lboost_thread-mt \
+         -lboost_system-mt \
+         -lboost_system \
+         -lboost_date_time \
+         -lboost_filesystem \
+         -lboost_regex \
+         -lboost_chrono \
+         -lboost_program_options \
+         -framework CoreFoundation \
+         -lhidapi \
+         -lssl \
+         -lsodium \
+         -lcrypto \
+         -ldl
 
     QMAKE_LFLAGS += -pie
 }

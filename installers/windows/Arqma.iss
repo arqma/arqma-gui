@@ -9,7 +9,7 @@ AppName=Arqma GUI Wallet
 ; Thus it's important to keep this stable over releases
 ; With a different "AppName" InnoSetup would treat a mere update as a completely new application and thus mess up
 
-AppVersion=0.5
+AppVersion=0.6
 DefaultDirName={pf}\Arqma GUI Wallet
 DefaultGroupName=Arqma GUI Wallet
 UninstallDisplayIcon={app}\arqma-wallet-gui.exe
@@ -79,7 +79,6 @@ Source: "arqma-wallet-gui.log"; DestDir: "{app}"; Flags: onlyifdoesntexist; Perm
 
 ; Arqma CLI wallet
 Source: "bin\arqma-wallet-cli.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "bin\arqma-gen-trusted-multisig.exe"; DestDir: "{app}"; Flags: ignoreversion
 
 ; Arqma wallet RPC interface implementation
 Source: "bin\arqma-wallet-rpc.exe"; DestDir: "{app}"; Flags: ignoreversion
@@ -195,11 +194,11 @@ Source: "bin\libiconv-2.dll"; DestDir: "{app}"; Flags: ignoreversion
 
 ; ICU, International Components for Unicode
 ; After changes for supporting UTF-8 path and file names by using Boost Locale, all those 5
-Source: "bin\libicudt??.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "bin\libicuin??.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "bin\libicuio??.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "bin\libicutu??.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "bin\libicuuc??.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\libicudt6?.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\libicuin6?.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\libicuio6?.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\libicutu6?.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\libicuuc6?.dll"; DestDir: "{app}"; Flags: ignoreversion
 
 ; Library for native language support, part of GNU gettext
 Source: "bin\libintl-8.dll"; DestDir: "{app}"; Flags: ignoreversion
